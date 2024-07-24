@@ -37,54 +37,54 @@ c. Accessing web-application from the host application
 
 ### Landing Page Hosted on VM
 
-![screenshot1](src/assets/images/1.PNG)
-[![Watch the video](src/assets/images/1.PNG)](https://www.youtube.com/watch?v=E44bZC31bes)
+![screenshot1](assets/images/1.PNG)
+[![Watch the video](assets/images/1.PNG)](https://www.youtube.com/watch?v=E44bZC31bes)
 
 ### Screenshot of Application | VM | IP | DATABASE
 
 # Submit function on VM
 
-![screenshot2](src/assets/images/Submit.PNG)
+![screenshot2](assets/images/Submit.PNG)
 
 # Delete function on VM
 
-![screenshot3](src/assets/images/Delete.PNG)
+![screenshot3](assets/images/Delete.PNG)
 
 # Update function on VM
 
-![screenshot4](src/assets/images/Update.PNG)
+![screenshot4](assets/images/Update.PNG)
 
 # IP of VM1
 
-![screenshot5](src/assets/images/vm1_ip.PNG)
+![screenshot5](assets/images/vm1_ip.PNG)
 
 # IP of VM2
 
-![screenshot6](src/assets/images/vm2_ip.PNG)
+![screenshot6](assets/images/vm2_ip.PNG)
 
 # IP of VM3
 
-![screenshot7](src/assets/images/vm3_ip.PNG)
+![screenshot7](assets/images/vm3_ip.PNG)
 
 # Status of APACHE2 on VM1
 
-![screenshot8](src/assets/images/vm1_status_apache2.PNG)
+![screenshot8](assets/images/vm1_status_apache2.PNG)
 
 # Status of MySql on VM2
 
-![screenshot9](src/assets/images/vm2_status_sqlserver.PNG)
+![screenshot9](assets/images/vm2_status_sqlserver.PNG)
 
 # Accessing VM1 Server from VM3
 
-![screenshot10](src/assets/images/vm3_ServerAccessFromVM1.PNG)
+![screenshot10](assets/images/vm3_ServerAccessFromVM1.PNG)
 
 # Database from VM2 Part1
 
-![screenshot10](src/assets/images/vm2_DB1.PNG)
+![screenshot10](assets/images/vm2_DB1.PNG)
 
 # Database from VM2 Part2
 
-![screenshot10](src/assets/images/vm2_DB2.PNG)
+![screenshot10](assets/images/vm2_DB2.PNG)
 
 
 ## Built With
@@ -123,7 +123,7 @@ $ sudo systemctl status apache2
 $ ifconfig
 ```
 
-- Step 2 : VM2 - Installing Mysql
+- Step 2 : VM2 - Installing mysql-server
 
 ```
 $ sudo apt install
@@ -140,14 +140,14 @@ $ mysql> EXIT
 $ sudo systemctl start mysql
 $ sudo systemctl status mysql
 $ ifconfig
-``
+```
 
 - Step 3 : VM3 - Accessing VM1 & VM2
 
 ```
 $ ping <vm1 IP>
 $ ping <vm2 IP>
-``
+```
 if both IP give response we can open any Web browser and open the VM1 (Server Hosted IP)
 
 ```
