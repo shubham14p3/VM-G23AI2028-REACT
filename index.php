@@ -269,7 +269,10 @@
         </div>
     </div>
 
+    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-tW4b5B/eVvE5nQ3Yo6C/2OmKTvB3dP8JTk6o6zF6rOev59aZWxZgOwhTEiG5eq5r" crossorigin="anonymous"></script>
+
+    <!-- Custom Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var toastMessage = "<?php echo $toastMessage; ?>";
