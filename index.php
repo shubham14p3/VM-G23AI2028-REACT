@@ -147,12 +147,10 @@
 </head>
 <body>
     <div class="header">
-        <p class="subject">
-            <span>Batch-02</span><br>
-            <span>Trimester - 2</span>
-        </p>
         <p class="assignment"><b>Virtualization and Cloud Computing</b>
-        <br/>Assignment 1</p>
+        <br/>Assignment 1 | <span>Batch-02</span> |
+            <span>Trimester - 2</span>
+        </p> 
         <a href="https://iitj.ac.in/" target="_blank" class="text-white"><h5>IITJ</h5></a>
     </div>
 
@@ -274,10 +272,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-tW4b5B/eVvE5nQ3Yo6C/2OmKTvB3dP8JTk6o6zF6rOev59aZWxZgOwhTEiG5eq5r" crossorigin="anonymous"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var toastElement = document.querySelector('.toast');
-            if (toastElement) {
-                var toast = new bootstrap.Toast(toastElement);
-                toast.show();
+            var toastMessage = "<?php echo $toastMessage; ?>";
+            if (toastMessage) {
+                var toastElement = document.getElementById(toastMessage);
+                if (toastElement) {
+                    var toast = new bootstrap.Toast(toastElement);
+                    toast.show();
+                }
             }
         });
     </script>
