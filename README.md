@@ -145,11 +145,19 @@ $ sudo systemctl start mysql
 $ sudo systemctl status mysql
 $ ifconfig
 ```
-- Note: You might need to create a user for db to acces for me is is 'vm' you need to do the following command 
+
+- Note: You might need to create a user for db to acces for me is is 'vm' you need to do the following command  
 ```
-CREATE USER 'vm'@'localhost' IDENTIFIED BY 'your_password';
-GRANT ALL PRIVILEGES ON *.* TO 'vm'@'localhost' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
+$ sudo mysql -u root -p
+$ mysql> SELECT host, user FROM mysql.user;
+$ mysql> CREATE USER 'vm'@'localhost' IDENTIFIED BY 'your_password';
+$ mysql> GRANT ALL PRIVILEGES ON *.* TO 'vm'@'localhost' WITH GRANT OPTION;
+$ mysql> FLUSH PRIVILEGES;
+```
+
+Check if you User has access by giving the following command :
+```
+$ mysql> SELECT host, user FROM mysql.user;
 ```
 
 - Step 3 : VM3 - Accessing VM1 & VM2
