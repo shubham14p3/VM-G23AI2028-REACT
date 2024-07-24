@@ -119,6 +119,8 @@ $ sudo apt install
 $ sudo apt update
 $ sudo apt install apache2
 $ sudo apt install php php-mysql
+$ sudo ufw enable
+$ sudo ufw allow 'Apache Full'
 $ sudo nano /var/www/html/index.php
 $ sudo systemctl start apache2
 $ sudo systemctl status apache2
@@ -142,6 +144,12 @@ $ mysql> EXIT
 $ sudo systemctl start mysql
 $ sudo systemctl status mysql
 $ ifconfig
+```
+- Note: You might need to create a user for db to acces for me is is 'vm' you need to do the following command 
+```
+CREATE USER 'vm'@'localhost' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON *.* TO 'vm'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
 ```
 
 - Step 3 : VM3 - Accessing VM1 & VM2
