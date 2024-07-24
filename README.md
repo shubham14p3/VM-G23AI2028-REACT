@@ -38,7 +38,9 @@ c. Accessing web-application from the host application
 ### Landing Page Hosted on VM
 
 ![screenshot1](assets/images/1.PNG)
-[![Watch the video](assets/images/1.PNG)](https://www.youtube.com/watch?v=E44bZC31bes)
+
+### Youtube Link : https://www.youtube.com/watch?v=E44bZC31bes
+[![Watch the video]](https://www.youtube.com/watch?v=E44bZC31bes)
 
 ### Screenshot of Application | VM | IP | DATABASE
 
