@@ -53,6 +53,7 @@
     <style>
         body {
             background-color: #f8f9fa;
+            padding-bottom: 80px; /* Add padding to prevent footer overlap */
         }
         .header {
             background-color: #007bff;
@@ -227,13 +228,17 @@
                         <td><?php echo htmlspecialchars($stdid) ?></td>
                         <td><?php echo htmlspecialchars($stdname) ?></td>
                         <td><?php echo htmlspecialchars($stdreg) ?></td>
-                        <td><a href="index.php?update=<?php echo htmlspecialchars($stdid) ?>" class="btn btn-warning">Update</a></td>
-                        <td><a href="index.php?delete=<?php echo htmlspecialchars($stdid) ?>" class="btn btn-danger">Delete</a></td>
+                        <td><a href="?update=<?php echo htmlspecialchars($stdid) ?>" class="btn btn-warning btn-sm">Update</a></td>
+                        <td><a href="?delete=<?php echo htmlspecialchars($stdid) ?>" class="btn btn-danger btn-sm">Delete</a></td>
                     </tr>
-                    <?php 
+                    <?php
                         }
                       } else {
-                        echo "<tr><td colspan='5'>No data to show</td></tr>";
+                    ?>
+                    <tr>
+                        <td colspan="5" class="text-center">No data found</td>
+                    </tr>
+                    <?php
                       }
                     ?>
                 </tbody>
@@ -241,54 +246,39 @@
         </div>
     </div>
 
-    <!-- Toast Container -->
-    <div id="toast-container" class="position-fixed top-0 end-0 p-3" style="z-index: 1000;">
-        <!-- Success Toast -->
-        <div id="success-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">Success</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
+    <!-- Toast Notifications -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="success-toast" class="toast bg-success text-white" role="alert">
             <div class="toast-body">
-                Operation completed successfully.
+                Operation successful!
             </div>
         </div>
-
-        <!-- Error Toast -->
-        <div id="error-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">Error</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
+        <div id="error-toast" class="toast bg-danger text-white" role="alert">
             <div class="toast-body">
-                There was an error with the operation.
+                Operation failed!
             </div>
         </div>
     </div>
 
-    <footer class="footer">
+    <div class="footer">
         <div class="text">
-            <a href="https://www.shubhamraj.dev/">Shubham Raj</a>
+            <a href="https://www.shubhamraj.dev/" target="_blank">Shubham Raj</a>
         </div>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/shubham14p3/" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
             <a href="https://github.com/shubham14p3" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
             <a href="https://www.shubhamraj.dev/" target="_blank" title="Personal Website"><i class="bi bi-person"></i></a>
         </div>
-    </footer>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9Uffw4FuxXvL0D98V7YfAKoXa3VGH8v3FJ6Vf1OD2V3Xj8ekfH9" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniU2d1N+OW2mJ+G4bft4U+k+kI4l0b0xwHe0S1cyXMmF7/6tuK8BBJ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-tW4b5B/eVvE5nQ3Yo6C/2OmKTvB3dP8JTk6o6zF6rOev59aZWxZgOwhTEiG5eq5r" crossorigin="anonymous"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            function showToast(id) {
-                var toast = new bootstrap.Toast(document.getElementById(id));
+        document.addEventListener('DOMContentLoaded', function() {
+            var toastElement = document.querySelector('.toast');
+            if (toastElement) {
+                var toast = new bootstrap.Toast(toastElement);
                 toast.show();
             }
-
-            <?php if ($toastMessage): ?>
-                showToast('<?php echo $toastMessage; ?>');
-            <?php endif; ?>
         });
     </script>
 </body>
