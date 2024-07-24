@@ -18,7 +18,7 @@ VM Web Application built with Apache2, Mysql, Php and deployed using Apache2. Th
 - Connection between VM and HOST system.
 - Simple MySQL application usage.
 
-## Tasks
+## Assignment Task
 
 - TASK 1 : Create 3 virtual machines using any Linux version with any hypervisor and name them VM_RollNumber_1, VM_RollNumber_2, and VM_RollNumber_3 respectively.
 
