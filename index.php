@@ -2,8 +2,9 @@
     // Creating connection
     $conn = mysqli_connect('192.168.56.102', 'vm', '123456789', 'iit_g23ai2028');
 
-    // Initialize toast message
-    $toastMessage = '';
+    // Initialize message
+    $message = '';
+    $messageType = '';
 
     // If click on button, take field value & insert to db
     if (isset($_POST['btn'])) {
@@ -13,9 +14,11 @@
         if (!empty($stdname) && !empty($stdreg)) {
             $query = "INSERT INTO student(stdname, stdreg) VALUES('$stdname', $stdreg)";
             $createQuery = mysqli_query($conn, $query);
-            $toastMessage = $createQuery ? "success-toast" : "error-toast";
+            $message = $createQuery ? "Operation successful!" : "Operation failed!";
+            $messageType = $createQuery ? "success" : "danger";
         } else {
-            $toastMessage = "error-toast";
+            $message = "Please fill in all fields!";
+            $messageType = "danger";
         }
     }
 
@@ -24,7 +27,8 @@
         $stdid = $_GET['delete'];
         $query = "DELETE FROM student WHERE id={$stdid}";
         $deleteQuery = mysqli_query($conn, $query);
-        $toastMessage = $deleteQuery ? "success-toast" : "error-toast";
+        $message = $deleteQuery ? "Record deleted successfully!" : "Deletion failed!";
+        $messageType = $deleteQuery ? "success" : "danger";
     }
 
     // If update request
@@ -36,9 +40,11 @@
         if (!empty($stdname) && !empty($stdreg)) {
             $query = "UPDATE student SET stdname='$stdname', stdreg=$stdreg WHERE id=$stdid";
             $updateQuery = mysqli_query($conn, $query);
-            $toastMessage = $updateQuery ? "success-toast" : "error-toast";
+            $message = $updateQuery ? "Record updated successfully!" : "Update failed!";
+            $messageType = $updateQuery ? "success" : "danger";
         } else {
-            $toastMessage = "error-toast";
+            $message = "Please fill in all fields!";
+            $messageType = "danger";
         }
     }
 ?>
@@ -165,6 +171,13 @@
     </div>
 
     <div class="container">
+        <!-- Display Message -->
+        <?php if ($message): ?>
+            <div class="alert alert-<?php echo htmlspecialchars($messageType); ?>" role="alert">
+                <?php echo htmlspecialchars($message); ?>
+            </div>
+        <?php endif; ?>
+
         <!-- Insert Form -->
         <div class="form-container shadow mb-4">
             <form method="post" class="d-flex flex-column">
@@ -244,20 +257,6 @@
         </div>
     </div>
 
-    <!-- Toast Notifications -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="success-toast" class="toast bg-success text-white" role="alert">
-            <div class="toast-body">
-                Operation successful!
-            </div>
-        </div>
-        <div id="error-toast" class="toast bg-danger text-white" role="alert">
-            <div class="toast-body">
-                Operation failed!
-            </div>
-        </div>
-    </div>
-
     <div class="footer">
         <div class="text">
             <a href="https://www.shubhamraj.dev/" target="_blank">Shubham Raj</a>
@@ -271,19 +270,5 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-tW4b5B/eVvE5nQ3Yo6C/2OmKTvB3dP8JTk6o6zF6rOev59aZWxZgOwhTEiG5eq5r" crossorigin="anonymous"></script>
-
-    <!-- Custom Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var toastMessage = "<?php echo $toastMessage; ?>";
-            if (toastMessage) {
-                var toastElement = document.getElementById(toastMessage);
-                if (toastElement) {
-                    var toast = new bootstrap.Toast(toastElement);
-                    toast.show();
-                }
-            }
-        });
-    </script>
 </body>
 </html>
