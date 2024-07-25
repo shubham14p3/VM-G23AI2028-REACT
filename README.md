@@ -118,9 +118,10 @@ $ git clone git@github.com:shubham14p3/vm-g23ai2028-php.git
 $ sudo apt install
 $ sudo apt update
 $ sudo apt install apache2
-$ sudo apt install php libapache2-mod-php php-mysql
+$ sudo ufw allow in "Apache Full"
+$ sudo ufw status
 $ sudo ufw enable
-$ sudo ufw allow 'Apache Full'
+$ sudo apt install php libapache2-mod-php php-mysql
 $ sudo nano /var/www/html/index.php
 $ sudo systemctl start apache2
 $ sudo systemctl status apache2
