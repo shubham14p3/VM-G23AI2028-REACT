@@ -118,7 +118,7 @@ $ git clone git@github.com:shubham14p3/vm-g23ai2028-php.git
 $ sudo apt install
 $ sudo apt update
 $ sudo apt install apache2
-$ sudo apt install php php-mysql
+$ sudo apt install php libapache2-mod-php php-mysql
 $ sudo ufw enable
 $ sudo ufw allow 'Apache Full'
 $ sudo nano /var/www/html/index.php
@@ -176,7 +176,7 @@ Local:   http://192.168.56.101/
 
 ## Extra Knowledge: Setting up Dummy Data in Database
 
-Create new file Dockerfile and place the below code
+- a : Create new file Dockerfile and place the below code
 
 ```
 <!-- Creates and selects the iit_g23ai2028 database. -->
@@ -195,7 +195,7 @@ ALTER TABLE student ADD PRIMARY KEY (id);
 <!-- Sets id to auto-increment starting from 8. -->
 ALTER TABLE student MODIFY id int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;'
 ```
-To View the above table content run the folloing command:
+- b: To View the above table content run the folloing command:
 
 ```
 $ mysql -u vm -p
@@ -206,6 +206,21 @@ $ SELECT * FROM students
 
 ```
 - Note: The above commands can change depending on username, db name and different versions, so do keep in mind.
+
+- C: To connect SQL between two vms:
+
+```
+On VM2
+$mysql -u root -p
+$sql> GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+$sql> FLUSH PRIVILEGES;
+
+On VM2
+$sudo ufw allow 3306
+$sudo ufw reload
+
+```
+
 
 # Connecting to DB
 
