@@ -177,6 +177,25 @@ Check if you User has access by giving the following command :
 $ mysql> SELECT host, user FROM mysql.user;
 ```
 
+If not We need to Bind the address 
+
+```
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+$sudo ufw allow 3306
+```
+it should looke something like this :
+```
+. . .
+lc-messages-dir = /usr/share/mysql
+skip-external-locking
+#
+# Instead of skip-networking the default is now to listen only on
+# localhost which is more compatible and is not less secure.
+bind-address            = 0.0.0.0
+. . .
+```
+
+
 - Step 3 : VM3 - Accessing VM1 & VM2
 
 ```
@@ -237,7 +256,11 @@ $sudo ufw allow 3306
 $sudo ufw reload
 
 ```
+- D: To test the Sql form VM2 (Or MySql Host)
 
+```
+$ mysql -u user -h database_server_ip -p
+```
 
 # Connecting to DB
 
