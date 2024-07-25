@@ -120,6 +120,22 @@ $ sudo apt update
 $ sudo apt install apache2
 $ sudo ufw allow in "Apache Full"
 $ sudo ufw status
+```
+![screenshot10](assets/images/2.PNG)
+
+- if it is not showing up dp the followings :
+```
+$ sudo ufw enable
+$ sudo ufw allow 'Apache Full'
+$ sudo ufw allow 'OpenSSH'
+$ sudo systemctl enable apache2
+$ sudo systemctl enable ssh
+$ sudo ufw status verbose
+```
+
+Continue if you see the above as it is 
+
+```
 $ sudo ufw enable
 $ sudo apt install php libapache2-mod-php php-mysql
 $ sudo nano /var/www/html/index.php
